@@ -1,4 +1,10 @@
 FROM nvidia/cuda:9.2-cudnn7-devel
+
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends \
+    sudo git wget curl unzip tree graphviz bzip2 eog && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+
 # userの追加
 RUN groupadd -g 1001 developer && \
     useradd -g developer -u 1001 -G sudo -m -s /bin/bash penguin && \
